@@ -13,10 +13,10 @@ In order for Datapie to function fully, you must provide an API KEY within the D
 
 ## Installation 
 
-git clone https://github.com/autumnxxtang3nt/DataPie.git </br>  
-cd DataPie </br>
-pip3 install -r requirements.txt </br>  
-python3 DataPie.py </br>
+git clone https://github.com/autumnxxtang3nt/DataPie.git  
+cd DataPie  
+pip3 install -r requirements.txt  
+python3 DataPie.py  
 
 ## Features
 
