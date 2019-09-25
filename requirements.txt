@@ -1,0 +1,6 @@
+requests
+os
+sys
+shodan
+colorama
+pyfiglet
