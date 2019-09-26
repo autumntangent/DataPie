@@ -17,7 +17,7 @@ In order for Datapie to function fully, you must provide **API KEYS** within the
 
 ## Installation 
 
-git clone https://github.com/autumnxxtang3nt/DataPie.git  
+git clone https://github.com/autumntangent/DataPie.git  
 cd DataPie  
 pip3 install -r requirements.txt  
 nano/ vim config.py  (Add your specifc API keys into the config file)  
