@@ -11,11 +11,6 @@ from colorama import Fore, Back, Style
 import shodan
 
 
-#Endpoint and URL Variables
-#Storing data as indexed variables 
-st = "https://api.securitytrails.com"
-
-
 #Banner
 
 from pyfiglet import Figlet
@@ -68,6 +63,7 @@ def nmap_scan():
 
 from config import API_KEYS
 
+st = "https://api.securitytrails.com"
 
 pages = ["/", "/index.html", "/admin.php", "/login.php","/login.html", "/auth/login", "/oauth2/authorize", "/crossdomain.xml", "/signin", "/admin.html",
 "/auth.db", "/auth/signin", "/forgotpassword", "/securelogin.asp", "/changepassword.php", "/resetpassword.php", "/password_reset"]
