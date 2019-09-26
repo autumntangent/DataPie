@@ -11,11 +11,6 @@ from colorama import Fore, Back, Style
 import shodan
 
 
-#Configure API Keys
-sectrails = ""                      
-shodan_key = ""
-fullcontact = ""
-
 #Endpoint and URL Variables
 #Storing data as indexed variables 
 st = "https://api.securitytrails.com"
@@ -63,13 +58,16 @@ def ptest(url):
 		url = ('http://' + host + xp)
 		rqp = requests.request("GET", url)
 		c = rqp.status_code
-		try:
-			print(rqp)
+		print(rqp)
 
 
 def nmap_scan():
 	print('SCANNING ' + (ip) + '\n\nSCANNING ALL PORTS FOR SERVICES AND REACHABILITY\nTHIS MAY TAKE A MINUTE...\n\n')
 	os.system(('nmap -v -PS -p- -T4 --reason -sV -Pn ') + (ip))
+
+
+from config import API_KEYS
+
 
 pages = ["/", "/index.html", "/admin.php", "/login.php","/login.html", "/auth/login", "/oauth2/authorize", "/crossdomain.xml", "/signin", "/admin.html",
 "/auth.db", "/auth/signin", "/forgotpassword", "/securelogin.asp", "/changepassword.php", "/resetpassword.php", "/password_reset"]
@@ -105,19 +103,20 @@ while xkey != '5':
 			if optd == '2':
 				print(Style.BRIGHT + 'ENTER HOST NAME TO BEGIN SCANNING')	
 				host = input()
-				if not sectrails:
+				akey = API_KEYS["sectrails"]
+				if not akey:
 					print (Style.BRIGHT + 'MISSING SECURITY TRAILS API KEY.\nPLEASE PROVIDE PROPER API AUTHENTICATION AND RUN AGAIN\n')
 					main_menu()
 				else:
 					url = "{0}/v1/history/{1}/whois".format(st, host)
-					querystring = {"apikey":"{0}".format(sectrails)}
+					querystring = {"apikey":"{0}".format(akey)}
 
 					response = requests.request("GET", url, params=querystring)
 					print(response.text)
 					print('SEARCHING FOR SUBDOMAINS...')
 					url = "{0}/v1/domain/{1}/subdomains".format(st, host)
 
-					querystring = {"apikey":"{0}".format(sectrails)}
+					querystring = {"apikey":"{0}".format(akey)}
 
 					response = requests.request("GET", url, params=querystring)
 
@@ -127,7 +126,7 @@ while xkey != '5':
 					print('GATHERING DATA...')
 					url = "{0}/v1/domains/{1}/list/".format(st, host)
 
-					querystring = {"apikey":"{0}".format(sectrails)}
+					querystring = {"apikey":"{0}".format(akey)}
 
 					response = requests.request("GET", url, params=querystring)
 
@@ -137,7 +136,7 @@ while xkey != '5':
 
 					url = "{0}/v1/history/{1}/dns/a".format(st, host)
 
-					querystring = {"apikey":"{0}".format(sectrails)}
+					querystring = {"apikey":"{0}".format(akey)}
 
 					response = requests.request("GET", url, params=querystring)
 					print(response.text)
@@ -158,11 +157,12 @@ while xkey != '5':
 	if xkey == '4':
 		print('ENTER HOSTNAME TO SCAN AND GATHER DATA ON')
 		host = input()
-		if not shodan_key:
+		shkey = API_KEYS["shodan_key"]
+		if not shkey:
 			print('MISSING SHODAN API KEY, RETURNING TO MAIN MENU')
 			main_menu()
 		else:
-			shodan = shodan.Shodan(shodan_key)
+			shodan = shodan.Shodan(shkey)
 			results = shodan.search(host)
 			print(results)
 
