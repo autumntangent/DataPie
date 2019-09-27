@@ -170,7 +170,7 @@ while xkey != '5':
 			sub_1()
 			optd = input()
 
-#NOT FULLY FUNCTIONAL AT THIS MOMENT
+
 	if xkey == '2':
 		n_menu()
 		nkey = input()
