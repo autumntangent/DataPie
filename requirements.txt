@@ -1,5 +1,4 @@
 requests
-sys
 shodan
 colorama
 pyfiglet
