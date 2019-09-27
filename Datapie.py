@@ -22,7 +22,7 @@ def main_banner():
 
 def main_menu():
 	print(Fore.GREEN, Style.BRIGHT + '\n\n\n::MAIN MENU::\n\n\tENTER [1] DOMAIN SCANNING\n\tENTER [2] FOR TECHNICAL AND NETWORK INFO\
-	\n\tENTER [3] TO SEND AN SMS\n\tENTER [4] FOR SHODAN\n\tENTER [5] TO EXIT\n')
+	\n\tENTER [4] FOR SHODAN\n\tENTER [5] TO EXIT\n')
 	print(Style.RESET_ALL)
 
 
