@@ -64,14 +64,15 @@ def ptest(url):
 
 def n_menu():
 	print(Style.BRIGHT, Fore.GREEN + 'NMAP SCANNING OPTIONS\n\nENTER[1] FOR A FULL PORT SCAN\nENTER[2] FOR A BASIC\
-	QUICK SCAN\nENTER[3] TO NMAP SCAN WITH YOUR OWN CUSTOM OPTIONS\n\n')
+	QUICK SCAN\nENTER[3] TO NMAP SCAN WITH YOUR OWN CUSTOM OPTIONS\nENTER [0] TO RETURN TO MAIN MENU\n\n')
 
 def nmap_scan_ports():
 	print('SCANNING ' + (ip) + '\n\nSCANNING ALL PORTS FOR SERVICES AND REACHABILITY\nTHIS MAY TAKE A MINUTE...\n\n')
 	os.system(('nmap -v -PS -p- -T4 --reason -sV -Pn ') + (ip))
+
 def nmap_basic():
 	print('SCANNING ' + (ip))
-	os.system(('nmap -v -PE -sV -Pn ') + (ip))
+	os.system(('nmap -v -PS -sV -Pn ') + (ip))
 
 def nmap_custom():
 	print('SCANNING ' + (ip) + 'WITH CUSTOM SCRIPTS\nTHIS CAN TAKE A WHILE DEPENDING ON\
@@ -88,10 +89,8 @@ st = "https://api.securitytrails.com"
 
 main_banner()
 print(RED + BRI)
-input('PRESS ANY KEY TO CONTINUE...')
+input('PRESS ANY KEY TO CONTINUE...\n\n\n')
 print(RES)
-print()
-print()
 main_menu()
 xkey = input()
 while xkey != '5':
@@ -126,14 +125,14 @@ while xkey != '5':
 
 					response = requests.request("GET", url, params=querystring)
 					print(response.text)
-					print('SEARCHING FOR SUBDOMAINS...')
+					print(GREEN + 'SEARCHING FOR SUBDOMAINS...')
 					url = "{0}/v1/domain/{1}/subdomains".format(st, host)
 					querystring = {"apikey":"{0}".format(akey)}
 					response = requests.request("GET", url, params=querystring)
 					print(response.text)
 
 
-					print('GATHERING DATA...')
+					print(GREEN + 'GATHERING DATA...')
 					url = "{0}/v1/domains/{1}/list/".format(st, host)
 					querystring = {"apikey":"{0}".format(akey)}
 					response = requests.request("GET", url, params=querystring)
@@ -144,6 +143,7 @@ while xkey != '5':
 					querystring = {"apikey":"{0}".format(akey)}
 					response = requests.request("GET", url, params=querystring)
 					print(response.text)
+					print(RES)
 
 			if optd == '3':
 				print('ENTER DOMAIN NAME TO SCRAPE')
@@ -173,13 +173,18 @@ while xkey != '5':
 		n_menu()
 		nkey = input()
 		while nkey != '0':
-			print('ENTER IP ADDRESS TO BEGING SCANNING...')
-			ip = input()
 			if nkey == '1':
-				print('SCANNING' + ip)
+				print('ENTER IP ADDRESS TO BEGING SCANNING...')
+				ip = input()
+				print('SCANNING ALL PORTS. THIS MAY TAKE A FEW MINUTES')
 				nmap_scan_ports()
-		
-
+			if nkey == '2':
+				print('ENTER THE IP ADDRESS OF HOST TO BEGIN SCANNING')
+				ip = input()
+				nmap_basic()
+			n_menu()
+			nkey = input()
+			
 	if xkey == '4':
 		print('ENTER HOSTNAME TO SCAN AND GATHER DATA ON')
 		host = input()
