@@ -113,32 +113,22 @@ while xkey != '5':
 					print(response.text)
 					print('SEARCHING FOR SUBDOMAINS...')
 					url = "{0}/v1/domain/{1}/subdomains".format(st, host)
-
 					querystring = {"apikey":"{0}".format(akey)}
-
 					response = requests.request("GET", url, params=querystring)
-
 					print(response.text)
 
 
 					print('GATHERING DATA...')
 					url = "{0}/v1/domains/{1}/list/".format(st, host)
-
 					querystring = {"apikey":"{0}".format(akey)}
-
 					response = requests.request("GET", url, params=querystring)
-
 					print(response.text)
 					print()
 					print('SCANNING...')
-
 					url = "{0}/v1/history/{1}/dns/a".format(st, host)
-
 					querystring = {"apikey":"{0}".format(akey)}
-
 					response = requests.request("GET", url, params=querystring)
 					print(response.text)
-
 
 			if optd == '3':
 				print('ENTER DOMAIN NAME TO SCRAPE')
@@ -155,7 +145,7 @@ while xkey != '5':
 					print('ENTER THE DOMAIN NAME TO SCAN')
 					domain = input()
 					url = ('https://urlscan.io/api/v1/search/')
-					headers= {"API-Key":"{0}".format(urlscan)}
+					headers = {"API-Key":"{0}".format(urlscan)}
 					querystring = {"domain":"{0}".format(domain)}
 					e = requests.get(url, headers=headers, params=querystring)
 					print(e.text)
