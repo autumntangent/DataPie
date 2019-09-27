@@ -193,7 +193,7 @@ while xkey != '5':
 				nmap_custom()
 			else:
 				print('INVALID KEY, RETURNING TO MENU')
-				nmenu()
+				n_menu()
 				nkey = input()
 			n_menu()
 			nkey = input()
