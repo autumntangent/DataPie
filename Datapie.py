@@ -191,6 +191,10 @@ while xkey != '5':
 				scr = input()
 				scripts = ' --script=' + scr
 				nmap_custom()
+			else:
+				print('INVALID KEY, RETURNING TO MENU')
+				nmenu()
+				nkey = input()
 			n_menu()
 			nkey = input()
 			
