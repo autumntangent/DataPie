@@ -175,18 +175,17 @@ while xkey != '5':
 		nkey = input()
 		while nkey != '0':
 			if nkey == '1':
-				print('ENTER IP ADDRESS TO BEGING SCANNING...')
+				print('ENTER IP ADDRESS TO BEGING SCANNING...')\
 				ip = input()
-				print('SCANNING ALL PORTS. THIS MAY TAKE A FEW MINUTES...')
+				print('SCANNING ALL PORTS. THIS MAY TAKE A FEW MINUTES')\
 				nmap_scan_ports()
 			if nkey == '2':
-				print('ENTER THE IP ADDRESS OF HOST TO BEGIN SCANNING...')
+				print('ENTER THE IP ADDRESS OF HOST TO BEGIN SCANNING')\
 				ip = input()
 				nmap_basic()
-		n_menu()
+			n_menu()
+			nkey = input()
 			
-		
-
 	if xkey == '4':
 		print('ENTER HOSTNAME TO SCAN AND GATHER DATA ON')
 		host = input()
