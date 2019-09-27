@@ -5,6 +5,7 @@ API_KEYS = {
 
 "sectrails":"",
 "shodan_key":"",
-"full_contact":""
+"full_contact":"",
+"url_scan":""
 
 }

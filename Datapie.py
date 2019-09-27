@@ -33,7 +33,7 @@ def main_menu():
 
 def sub_1():
 	print(Style.BRIGHT, Fore.BLUE + '\n\n::DOMAIN SCANNING OPTIONS::\n\n\tENTER [1] FOR HEADER CAPTURE\n\
-	ENTER [2]FOR WHOIS INFO\n\tENTER [3] TO SCRAPE WEB PAGES\n\tENTER [0] TO RETURN TO THE MAIN MENU\n')
+	ENTER [2]FOR WHOIS INFO\n\tENTER [3] TO SCRAPE WEB PAGES\n\tENTER [4] FOR URL DEEP SCAN\n\tENTER [0] TO RETURN TO THE MAIN MENU\n')
 	print(Style.RESET_ALL)
 
 def sub_2():
@@ -139,10 +139,26 @@ while xkey != '5':
 					response = requests.request("GET", url, params=querystring)
 					print(response.text)
 
+
 			if optd == '3':
 				print('ENTER DOMAIN NAME TO SCRAPE')
 				host = input()
 				scrape(pages)
+			if optd == '4':
+				urlscan = API_KEYS["url_scan"]
+				if not urlscan:
+					print(Style.BRIGHT, Fore.RED + 'MISSING API KEY FOR MAIL.DB. PLEASE PROVIDE A PROPER API KEY IN THE CONFIG FILE\n\
+					RETURNING TO MAIN MENU\n')
+					print(Style.RESET_ALL)
+					sub_2()
+				else:
+					print('ENTER THE DOMAIN NAME TO SCAN')
+					domain = input()
+					url = ('https://urlscan.io/api/v1/search/')
+					headers= {"API-Key":"{0}".format(urlscan)}
+					querystring = {"domain":"{0}".format(domain)}
+					e = requests.get(url, headers=headers, params=querystring)
+					print(e.text)
 
 			sub_1()
 			optd = input()
