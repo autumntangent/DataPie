@@ -11,6 +11,11 @@ from colorama import Fore, Back, Style
 import shodan
 
 
+#Endpoint and URL Variables
+#Storing data as indexed variables 
+st = "https://api.securitytrails.com"
+
+
 #Banner
 
 from pyfiglet import Figlet
@@ -63,7 +68,6 @@ def nmap_scan():
 
 from config import API_KEYS
 
-st = "https://api.securitytrails.com"
 
 pages = ["/", "/index.html", "/admin.php", "/login.php","/login.html", "/auth/login", "/oauth2/authorize", "/crossdomain.xml", "/signin", "/admin.html",
 "/auth.db", "/auth/signin", "/forgotpassword", "/securelogin.asp", "/changepassword.php", "/resetpassword.php", "/password_reset"]
@@ -92,7 +96,6 @@ while xkey != '5':
 					print(x.status_code)
 					print('\n\nHEADERS RETURNED AS:\n\n')
 					print(x.headers)
-					sub_1()
 				else:
 					print(Fore.RED + 'AN ERROR HAS OCCURED\n STATUS CODE RETURNED IS'\
 					+ x.status_code + x.text)
@@ -102,7 +105,6 @@ while xkey != '5':
 				akey = API_KEYS["sectrails"]
 				if not akey:
 					print (Style.BRIGHT + 'MISSING SECURITY TRAILS API KEY.\nPLEASE PROVIDE PROPER API AUTHENTICATION AND RUN AGAIN\n')
-					main_menu()
 				else:
 					url = "{0}/v1/history/{1}/whois".format(st, host)
 					querystring = {"apikey":"{0}".format(akey)}
@@ -156,7 +158,6 @@ while xkey != '5':
 		shkey = API_KEYS["shodan_key"]
 		if not shkey:
 			print('MISSING SHODAN API KEY, RETURNING TO MAIN MENU')
-			main_menu()
 		else:
 			shodan = shodan.Shodan(shkey)
 			results = shodan.search(host)
