@@ -184,6 +184,8 @@ while xkey != '5':
 				ip = input()
 				nmap_basic()
 			if nkey == '3':
+				print('ENTER THE IP ADDRESS TO BEGIN SCAN')
+				ip = input()
 				print('ENTER THE NAME OF THE SCRIPT YOU WOULD LIKE TO USE DURING THE SCAN')
 				scr = input()
 				scripts = ('--script=' + scr)
