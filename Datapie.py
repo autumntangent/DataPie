@@ -79,7 +79,7 @@ def nmap_custom():
 	print('SCANNING ' + (ip) + 'WITH CUSTOM SCRIPTS\nTHIS CAN TAKE A WHILE DEPENDING ON\
 	\nTHE SCRIPTS CHOSEN\n')
 	print('USING THE FOLLOWING SCRIPTS:' + scripts)
-	os.system(('nmap -v --reason -sV -Pn ') + (ip) + ' '(scripts))
+	os.system(('nmap -v --reason -sV -Pn ') + (ip) + '' (scripts))
 
 from config import API_KEYS
 
@@ -188,7 +188,7 @@ while xkey != '5':
 				ip = input()
 				print('ENTER THE NAME OF THE SCRIPT YOU WOULD LIKE TO USE DURING THE SCAN')
 				scr = input()
-				scripts = ('--script=' + scr)
+				scripts = '--script=' + scr
 				nmap_custom()
 			n_menu()
 			nkey = input()
