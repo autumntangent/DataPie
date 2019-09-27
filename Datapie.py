@@ -69,6 +69,7 @@ def n_menu():
 def nmap_scan_ports():
 	print('SCANNING ' + (ip) + '\n\nSCANNING ALL PORTS FOR SERVICES AND REACHABILITY\nTHIS MAY TAKE A MINUTE...\n\n')
 	os.system(('nmap -v -PS -p- -T4 --reason -sV -Pn ') + (ip))
+
 def nmap_basic():
 	print('SCANNING ' + (ip))
 	os.system(('nmap -v -PS -sV -Pn ') + (ip))
@@ -88,10 +89,8 @@ st = "https://api.securitytrails.com"
 
 main_banner()
 print(RED + BRI)
-input('PRESS ANY KEY TO CONTINUE...')
+input('PRESS ANY KEY TO CONTINUE...\n\n\n')
 print(RES)
-print()
-print()
 main_menu()
 xkey = input()
 while xkey != '5':
@@ -174,16 +173,14 @@ while xkey != '5':
 		n_menu()
 		nkey = input()
 		while nkey != '0':
-			print('ENTER IP ADDRESS TO BEGING SCANNING...')
-			ip = input()
-			if nkey == '1':
-				print('SCANNING ' + ip)
-				print('SCANNING ALL PORTS. THIS MAY TAKE A FEW MINUTES...')
+                        if nkey == '1':
+                                print('ENTER THE IP ADDRESS TO BEGIN SCANNING...')
+                                ip = input()
+				print('SCANNING ALL PORTS. THIS MAY TAKE A FEW MINUTES')
 				nmap_scan_ports()
 			if nkey == '2':
 				print('ENTER THE IP ADDRESS OF HOST TO BEGIN SCANNING...')
 				ip = input()
-				print('SCANNING ' + ip)
 				nmap_basic()
 		n_menu()
 			
