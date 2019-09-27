@@ -63,8 +63,9 @@ def ptest(url):
 		print(rqp)
 
 def n_menu():
-	print(Style.BRIGHT, Fore.GREEN + 'NMAP SCANNING OPTIONS\n\nENTER[1] FOR A FULL PORT SCAN\nENTER[2] FOR A BASIC\
-	QUICK SCAN\nENTER[3] TO NMAP SCAN WITH YOUR OWN CUSTOM OPTIONS\nENTER [0] TO RETURN TO MAIN MENU\n\n')
+	print(Style.BRIGHT, Fore.GREEN + 'NMAP SCANNING OPTIONS\n\nENTER[1] FOR A FULL PORT SCAN\n\
+	ENTER[2] FOR A BASIC QUICK SCAN\nENTER[3] TO NMAP SCAN WITH YOUR OWN CUSTOM OPTIONS\n\
+	ENTER [0] TO RETURN TO MAIN MENU\n\n')
 
 def nmap_scan_ports():
 	print('SCANNING ' + (ip) + '\n\nSCANNING ALL PORTS FOR SERVICES AND REACHABILITY\nTHIS MAY TAKE A MINUTE...\n\n')
@@ -182,6 +183,11 @@ while xkey != '5':
 				print('ENTER THE IP ADDRESS OF HOST TO BEGIN SCANNING')
 				ip = input()
 				nmap_basic()
+			if nkey == '3':
+				print('ENTER THE NAME OF THE SCRIPT YOU WOULD LIKE TO USE DURING THE SCAN')
+				scr = input()
+				scripts = ('--script=' + scr)
+				nmap_custom()
 			n_menu()
 			nkey = input()
 			
