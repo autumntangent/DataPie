@@ -11,34 +11,35 @@ from colorama import Fore, Back, Style
 import shodan
 
 
-#Endpoint and URL Variables
-#Storing data as indexed variables 
-st = "https://api.securitytrails.com"
-
-
 #Banner
 
 from pyfiglet import Figlet
 
+BRI = Style.BRIGHT
+RED = Fore.RED
+GREEN = Fore.GREEN
+BLUE = Fore.BLUE
+RES = Style.RESET_ALL
+
 def main_banner():
-	print(Fore.GREEN)
+	print(GREEN)
 	custom_fig = Figlet(font='doom')
 	print(custom_fig.renderText('DATA.PIE'))
 
 def main_menu():
-	print(Fore.GREEN, Style.BRIGHT + '\n\n\n::MAIN MENU::\n\n\tENTER [1] DOMAIN SCANNING\n\tENTER [2] FOR TECHNICAL AND NETWORK INFO\
+	print(GREEN + '\n\n\n::MAIN MENU::\n\n\tENTER [1] DOMAIN SCANNING\n\tENTER [2] FOR TECHNICAL AND NETWORK INFO\
 	\n\tENTER [4] FOR SHODAN\n\tENTER [5] TO EXIT\n')
-	print(Style.RESET_ALL)
+	print(RES)
 
 
 def sub_1():
-	print(Style.BRIGHT, Fore.BLUE + '\n\n::DOMAIN SCANNING OPTIONS::\n\n\tENTER [1] FOR HEADER CAPTURE\n\
+	print(BLUE + '\n\n::DOMAIN SCANNING OPTIONS::\n\n\tENTER [1] FOR HEADER CAPTURE\n\
 	ENTER [2]FOR WHOIS INFO\n\tENTER [3] TO SCRAPE WEB PAGES\n\tENTER [4] FOR URL DEEP SCAN\n\tENTER [0] TO RETURN TO THE MAIN MENU\n')
-	print(Style.RESET_ALL)
+	print(RES)
 
 def sub_2():
-	print(Style.BRIGHT, Fore.RED + '\n\nNETWORK SCANNING\n\tENTER [1] FOR BASIC NMAP SCAN\n\n')
-	print(Style.RESET_ALL)
+	print(RED + '\n\nNETWORK SCANNING\n\tENTER [1] FOR BASIC NMAP SCAN\n\n')
+	print(RES)
 
 def scrape(url):
 	for y in url:
@@ -49,9 +50,10 @@ def scrape(url):
 		fail = 'ERROR, PAGE NOT AVAILABLE'
 		print(url, c)
 		if c == 200: 
-			print(success)
+			print(GREEN + success)
 		else:
-			print(fail)
+			print(RED + fail)
+		print(RES)
 
 def ptest(url):
 	for xp in url:
@@ -60,22 +62,34 @@ def ptest(url):
 		c = rqp.status_code
 		print(rqp)
 
+def n_menu():
+	print(Style.BRIGHT, Fore.GREEN + 'NMAP SCANNING OPTIONS\n\nENTER[1] FOR A FULL PORT SCAN\nENTER[2] FOR A BASIC\
+	QUICK SCAN\nENTER[3] TO NMAP SCAN WITH YOUR OWN CUSTOM OPTIONS\n\n')
 
-def nmap_scan():
+def nmap_scan_ports():
 	print('SCANNING ' + (ip) + '\n\nSCANNING ALL PORTS FOR SERVICES AND REACHABILITY\nTHIS MAY TAKE A MINUTE...\n\n')
 	os.system(('nmap -v -PS -p- -T4 --reason -sV -Pn ') + (ip))
+def nmap_basic():
+	print('SCANNING ' + (ip))
+	os.system(('nmap -v -PE -sV -Pn ') + (ip))
 
+def nmap_custom():
+	print('SCANNING ' + (ip) + 'WITH CUSTOM SCRIPTS\nTHIS CAN TAKE A WHILE DEPENDING ON\
+	\nTHE SCRIPTS CHOSEN\n')
+	print('USING THE FOLLOWING SCRIPTS:' + scripts)
+	os.system(('nmap -v --reason -sV -Pn ') + (ip) + ' '(scripts))
 
 from config import API_KEYS
 
 
 pages = ["/", "/index.html", "/admin.php", "/login.php","/login.html", "/auth/login", "/oauth2/authorize", "/crossdomain.xml", "/signin", "/admin.html",
 "/auth.db", "/auth/signin", "/forgotpassword", "/securelogin.asp", "/changepassword.php", "/resetpassword.php", "/password_reset"]
+st = "https://api.securitytrails.com"
 
 main_banner()
-print(Fore.RED, Style.BRIGHT)
+print(RED + BRI)
 input('PRESS ANY KEY TO CONTINUE...')
-print(Style.RESET_ALL)
+print(RES)
 print()
 print()
 main_menu()
@@ -87,24 +101,25 @@ while xkey != '5':
 		optd = input()
 		while optd != '0':
 			if optd == '1':
-				print(Style.BRIGHT + 'ENTER HOST/DOMAIN NAME TO BEGIN SCANNING')
-				print(Style.RESET_ALL)
+				print(BRI + 'ENTER HOST/DOMAIN NAME TO BEGIN SCANNING')
+				print(RES)
 				host = input()
 				x = requests.get('https://' + host)
 				if x.status_code == 200:
-					print(Style.BRIGHT + 'SUCCESSFUL CONNECTION. STATUS CODE RETURNED IS\n\n')
+					print(BRI + GREEN + 'SUCCESSFUL CONNECTION. STATUS CODE RETURNED IS\n\n')
 					print(x.status_code)
 					print('\n\nHEADERS RETURNED AS:\n\n')
 					print(x.headers)
 				else:
-					print(Fore.RED + 'AN ERROR HAS OCCURED\n STATUS CODE RETURNED IS'\
+					print(RED + 'AN ERROR HAS OCCURED\n STATUS CODE RETURNED IS'\
 					+ x.status_code + x.text)
+					print(RES)
 			if optd == '2':
-				print(Style.BRIGHT + 'ENTER HOST NAME TO BEGIN SCANNING')	
+				print(BRI + 'ENTER HOST NAME TO BEGIN SCANNING')	
 				host = input()
 				akey = API_KEYS["sectrails"]
 				if not akey:
-					print (Style.BRIGHT + 'MISSING SECURITY TRAILS API KEY.\nPLEASE PROVIDE PROPER API AUTHENTICATION AND RUN AGAIN\n')
+					print (BRI + RED + 'MISSING SECURITY TRAILS API KEY.\nPLEASE PROVIDE PROPER API AUTHENTICATION AND RUN AGAIN\n')
 				else:
 					url = "{0}/v1/history/{1}/whois".format(st, host)
 					querystring = {"apikey":"{0}".format(akey)}
@@ -137,9 +152,9 @@ while xkey != '5':
 			if optd == '4':
 				urlscan = API_KEYS["url_scan"]
 				if not urlscan:
-					print(Style.BRIGHT, Fore.RED + 'MISSING API KEY FOR MAIL.DB. PLEASE PROVIDE A PROPER API KEY IN THE CONFIG FILE\n\
+					print(BRI + RED + 'MISSING API KEY FOR URLSCAN.IO. PLEASE PROVIDE A PROPER API KEY IN THE CONFIG FILE\n\
 					RETURNING TO MAIN MENU\n')
-					print(Style.RESET_ALL)
+					print(RES)
 					sub_2()
 				else:
 					print('ENTER THE DOMAIN NAME TO SCAN')
@@ -153,10 +168,17 @@ while xkey != '5':
 			sub_1()
 			optd = input()
 
+#NOT FULLY FUNCTIONAL AT THIS MOMENT
 	if xkey == '2':
-		print('ENTER IP ADDRESS TO BEGING SCANNING...')
-		ip = input()
-		nmap_scan()
+		n_menu()
+		nkey = input()
+		while nkey != '0':
+			print('ENTER IP ADDRESS TO BEGING SCANNING...')
+			ip = input()
+			if nkey == '1':
+				print('SCANNING' + ip)
+				nmap_scan_ports()
+		
 
 	if xkey == '4':
 		print('ENTER HOSTNAME TO SCAN AND GATHER DATA ON')
