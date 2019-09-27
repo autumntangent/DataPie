@@ -173,8 +173,8 @@ while xkey != '5':
 		n_menu()
 		nkey = input()
 		while nkey != '0':
-        	if nkey == '1':
-				print('ENTER THE IP ADDRESS TO BEGIN SCANNING...')
+			if nkey == '1':
+				print('ENTER IP ADDRESS TO BEGING SCANNING...')
 				ip = input()
 				print('SCANNING ALL PORTS. THIS MAY TAKE A FEW MINUTES')
 				nmap_scan_ports()
