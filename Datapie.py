@@ -166,6 +166,9 @@ while xkey != '5':
 					querystring = {"domain":"{0}".format(domain)}
 					e = requests.get(url, headers=headers, params=querystring)
 					print(e.text)
+			else:
+				print(RED + 'INVALID KEY ENTERED. PLEASE SELECT AN OPTION FROM THE MENU')
+				print(RES)
 
 			sub_1()
 			optd = input()
