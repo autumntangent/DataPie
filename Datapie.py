@@ -20,6 +20,7 @@ RED = Fore.RED
 GREEN = Fore.GREEN
 BLUE = Fore.BLUE
 RES = Style.RESET_ALL
+YELLOW = Fore.YELLOW
 
 def main_banner():
 	print(GREEN)
@@ -63,7 +64,7 @@ def ptest(url):
 		print(rqp)
 
 def n_menu():
-	print(GREEN + '\nNMAP SCANNING OPTIONS\n\nENTER [1] FOR A FULL PORT SCAN\
+	print(YELLOW + '\nNMAP SCANNING OPTIONS\n\nENTER [1] FOR A FULL PORT SCAN\
 	\nENTER [2] FOR A BASIC QUICK SCAN\nENTER [3] TO NMAP SCAN WITH YOUR OWN CUSTOM OPTIONS\
 	\nENTER [0] TO RETURN TO MAIN MENU\n\n')
 	print(RES)
@@ -158,7 +159,6 @@ while xkey != '5':
 					print(BRI + RED + 'MISSING API KEY FOR URLSCAN.IO. PLEASE PROVIDE A PROPER API KEY IN THE CONFIG FILE\n\
 					RETURNING TO MAIN MENU\n')
 					print(RES)
-					sub_2()
 				else:
 					print('ENTER THE DOMAIN NAME TO SCAN')
 					domain = input()
@@ -206,7 +206,8 @@ while xkey != '5':
 		host = input()
 		shkey = API_KEYS["shodan_key"]
 		if not shkey:
-			print('MISSING SHODAN API KEY, RETURNING TO MAIN MENU')
+			print(RED + '\nMISSING SHODAN API KEY, RETURNING TO MAIN MENU')
+			print(RES)
 		else:
 			shodan = shodan.Shodan(shkey)
 			results = shodan.search(host)
