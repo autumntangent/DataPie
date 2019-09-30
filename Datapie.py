@@ -87,7 +87,7 @@ from config import API_KEYS
 
 pages = ["/", "/index.html", "/admin.php", "/login.php","/login.html", "/auth/login", "/oauth2/authorize", "/crossdomain.xml", "/signin", "/admin.html",
 "/auth", "/auth/sign_in", "/auth.db", "/auth/signin", "/forgotpassword", "/securelogin.asp", "/changepassword.php", "/resetpassword.php", "/password_reset", 
-"/api", "/resetpassword", "/mysql", "/mysql.db", "/.db"]
+"/api", "/resetpassword", "/mysql", "/mysql.db", "/.db", "/console"]
 st = "https://api.securitytrails.com"
 
 main_banner()
