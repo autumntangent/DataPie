@@ -27,13 +27,13 @@ def main_banner():
 	print(custom_fig.renderText('DATA.PIE'))
 
 def main_menu():
-	print(GREEN + '\n\n\n::MAIN MENU::\n\n\tENTER [1] DOMAIN SCANNING\n\tENTER [2] FOR TECHNICAL AND NETWORK INFO\
+	print(BRI, GREEN + '\n\n\n::MAIN MENU::\n\n\tENTER [1] DOMAIN SCANNING\n\tENTER [2] FOR NMAP SCANS & NETWORK INFO\
 	\n\tENTER [4] FOR SHODAN\n\tENTER [5] TO EXIT\n')
 	print(RES)
 
 
 def sub_1():
-	print(BLUE + '\n\n::DOMAIN SCANNING OPTIONS::\n\n\tENTER [1] FOR HEADER CAPTURE\n\
+	print(BRI, BLUE + '\n\n::DOMAIN SCANNING OPTIONS::\n\n\tENTER [1] FOR HEADER CAPTURE\n\
 	ENTER [2]FOR WHOIS INFO\n\tENTER [3] TO SCRAPE WEB PAGES\n\tENTER [4] FOR URL DEEP SCAN\n\tENTER [0] TO RETURN TO THE MAIN MENU\n')
 	print(RES)
 
@@ -86,7 +86,8 @@ from config import API_KEYS
 
 
 pages = ["/", "/index.html", "/admin.php", "/login.php","/login.html", "/auth/login", "/oauth2/authorize", "/crossdomain.xml", "/signin", "/admin.html",
-"/auth.db", "/auth/signin", "/forgotpassword", "/securelogin.asp", "/changepassword.php", "/resetpassword.php", "/password_reset"]
+"/auth", "/auth/sign_in", "/auth.db", "/auth/signin", "/forgotpassword", "/securelogin.asp", "/changepassword.php", "/resetpassword.php", "/password_reset", 
+"/api", "/resetpassword", "/mysql", "/mysql.db", "/.db"]
 st = "https://api.securitytrails.com"
 
 main_banner()
@@ -166,9 +167,12 @@ while xkey != '5':
 					querystring = {"domain":"{0}".format(domain)}
 					e = requests.get(url, headers=headers, params=querystring)
 					print(e.text)
+
 			validopts = ["0", "1", "2", "3", "4"]
 			if optd not in validopts:
-				print('INVALID KEY, PLEASE SELECT AN OPTION FROM THE MENU!')
+				print(RED + 'INVALID KEY, PLEASE SELECT AN OPTION FROM THE MENU!')
+				print(RES)
+
 				
 			sub_1()
 			optd = input()
@@ -194,10 +198,6 @@ while xkey != '5':
 				scr = input()
 				scripts = ' --script=' + scr
 				nmap_custom()
-			else:
-				print('INVALID KEY, RETURNING TO MENU')
-				n_menu()
-				nkey = input()
 			n_menu()
 			nkey = input()
 			
