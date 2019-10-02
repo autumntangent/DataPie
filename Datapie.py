@@ -57,15 +57,8 @@ def scrape(url):
 			print(RED + fail)
 		print(RES)
 
-def ptest(url):
-	for xp in url:
-		url = ('http://' + host + xp)
-		rqp = requests.request("GET", url)
-		c = rqp.status_code
-		print(rqp)
-
 def n_menu():
-	print(YELLOW + '\nNMAP SCANNING OPTIONS\n\nENTER [1] FOR A FULL PORT SCAN\
+	print(BLUE, BRI + '\nNMAP SCANNING OPTIONS\n\nENTER [1] FOR A FULL PORT SCAN\
 	\nENTER [2] FOR A BASIC QUICK SCAN\nENTER [3] TO NMAP SCAN WITH YOUR OWN CUSTOM OPTIONS\
 	\nENTER [0] TO RETURN TO MAIN MENU\n\n')
 	print(RES)
@@ -123,16 +116,18 @@ while xkey != '5':
 				except:
 						print(BRI, RED + 'ERROR IN COMPLETING THIS MODULE')
 						print('PLEASE INPUT ANOTHER HOSTNAME')
+						print(RES)
 						host = input()
 						url = 'https://' + host
-						x = requests.get(url)
-						print(x.headers)
-						print(RES)
-						continue
-				finally:
-					print(BRI, RED + '\nBUILT IN ERROR, CANNOT COMPLETE THIS MODULE.\nRETURNING TO THE MAIN MENU...')
-					print(RES)
-					break
+						try:
+							x = requests.get(url)
+							print(x.headers)
+						except:
+							print('CANNOT COMPLETE MODULE. ERROR RETURNED')
+						finally:
+							print(RES)
+							break
+
 			if optd == '2':
 				print(BRI + 'ENTER HOST NAME TO BEGIN SCANNING')	
 				host = input()
