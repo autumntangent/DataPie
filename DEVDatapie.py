@@ -117,8 +117,7 @@ print(RES)
 main_menu()
 xkey = input()
 while xkey != '5':
-
-	if xkey == '1':
+		if xkey == '1':
 		sub_1()
 		optd = input()
 		while optd != '0':
@@ -126,16 +125,33 @@ while xkey != '5':
 				print(BRI + 'ENTER HOST/DOMAIN NAME TO BEGIN SCANNING')
 				print(RES)
 				host = input()
-				x = requests.get('https://' + host)
-				if x.status_code == 200:
-					print(BRI + GREEN + 'SUCCESSFUL CONNECTION. STATUS CODE RETURNED IS\n\n')
-					print(x.status_code)
-					print('\n\nHEADERS RETURNED AS:\n\n')
-					print(x.headers)
-				else:
-					print(RED + 'AN ERROR HAS OCCURED\n STATUS CODE RETURNED IS'\
-					+ x.status_code + x.text)
-					print(RES)
+				url = 'https://' + host
+				try:
+					x = requests.get(url)
+					if x.status_code == 200:
+						print(BRI, GREEN + 'SUCCESSFUL CONNECTION. STATUS CODE RETURNED IS\n\n')
+						print(x.status_code)
+						print('\n\nHEADERS RETURNED AS:\n\n')
+						print(x.headers)
+					else:
+						print(RED + 'AN ERROR HAS OCCURED\n STATUS CODE RETURNED IS'\
+						+ x.status_code + x.text)
+						print(RES)
+				except:
+						print(BRI, RED + 'ERROR IN COMPLETING THIS MODULE')
+						print('PLEASE INPUT ANOTHER HOSTNAME')
+						print(RES)
+						host = input()
+						url = 'https://' + host
+						try:
+							x = requests.get(url)
+							print(x.headers)
+						except:
+							print('CANNOT COMPLETE MODULE. ERROR RETURNED')
+						finally:
+							print(RES)
+							break
+							
 			if optd == '2':
 				print(BRI + 'ENTER HOST NAME TO BEGIN SCANNING')	
 				host = input()
