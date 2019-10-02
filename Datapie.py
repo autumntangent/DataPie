@@ -9,6 +9,7 @@ import os
 import sys
 from colorama import Fore, Back, Style
 import shodan
+import urllib3
 
 
 #Banner
@@ -107,16 +108,31 @@ while xkey != '5':
 				print(BRI + 'ENTER HOST/DOMAIN NAME TO BEGIN SCANNING')
 				print(RES)
 				host = input()
-				x = requests.get('https://' + host)
-				if x.status_code == 200:
-					print(BRI + GREEN + 'SUCCESSFUL CONNECTION. STATUS CODE RETURNED IS\n\n')
-					print(x.status_code)
-					print('\n\nHEADERS RETURNED AS:\n\n')
-					print(x.headers)
-				else:
-					print(RED + 'AN ERROR HAS OCCURED\n STATUS CODE RETURNED IS'\
-					+ x.status_code + x.text)
+				url = 'https://' + host
+				try:
+					x = requests.get(url)
+					if x.status_code == 200:
+						print(BRI, GREEN + 'SUCCESSFUL CONNECTION. STATUS CODE RETURNED IS\n\n')
+						print(x.status_code)
+						print('\n\nHEADERS RETURNED AS:\n\n')
+						print(x.headers)
+					else:
+						print(RED + 'AN ERROR HAS OCCURED\n STATUS CODE RETURNED IS'\
+						+ x.status_code + x.text)
+						print(RES)
+				except:
+						print(BRI, RED + 'ERROR IN COMPLETING THIS MODULE')
+						print('PLEASE INPUT ANOTHER HOSTNAME')
+						host = input()
+						url = 'https://' + host
+						x = requests.get(url)
+						print(x.headers)
+						print(RES)
+						continue
+				finally:
+					print(BRI, RED + '\nBUILT IN ERROR, CANNOT COMPLETE THIS MODULE.\nRETURNING TO THE MAIN MENU...')
 					print(RES)
+					break
 			if optd == '2':
 				print(BRI + 'ENTER HOST NAME TO BEGIN SCANNING')	
 				host = input()
