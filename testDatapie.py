@@ -76,9 +76,9 @@ def subdomain_brute(url):
 		except:
 			sleep(6)
 			continue
-
-
-
+		finally:
+			sleep(3)
+			pass
 def n_menu():
 	print(YELLOW + '\nNMAP SCANNING OPTIONS\n\nENTER [1] FOR A FULL PORT SCAN\
 	\nENTER [2] FOR A BASIC QUICK SCAN\nENTER [3] TO NMAP SCAN WITH YOUR OWN CUSTOM OPTIONS\
