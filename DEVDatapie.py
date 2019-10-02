@@ -174,7 +174,9 @@ while xkey != '5':
 				scrape(pages)
 				print(BRI,GREEN +'SCANNING ' + host +' FOR COMMON SUBDOMAINS...')
 				sleep(6)
-				subdomain_brute(SUBDOMAINS)
+				subdomain_brute(SUBDOMAINS[0:5])
+				sleep(8)
+				subdomain_brute(SUBDOMAINS[6:10])
 			if optd == '4':
 				urlscan = API_KEYS["url_scan"]
 				if not urlscan:
