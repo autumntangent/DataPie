@@ -104,9 +104,9 @@ def subdomain_brute(url):
 				continue
 			except:
 				print('UNABLE TO CONNECT TO EACH DOMAIN, RETURNING TO MENU')
-				continue
+				pass
 			finally:
-				return
+				break
 
 
 from config import API_KEYS
