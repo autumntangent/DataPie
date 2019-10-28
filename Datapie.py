@@ -64,11 +64,11 @@ class nmap():
 
 class keys():
 	def show():
-		Style.Colors.G("URRENT SESSION API KEYS:")
+		Style.Colors.G("CURRENT SESSION API KEYS:")
 		Style.RST()
 		for x, y in API_KEYS.items():
 			if not y:
-				Style.Colors.BB(x),Style.Colors.R("NO KEY FOUND!!")
+				Style.Colors.BB(x + " \033[1;31m : NO KEY FOUND!")
 			else:
 				Style.Colors.BB(x + " : " + y)
 
@@ -99,7 +99,7 @@ def scrape(url):
 		fail = 'ERROR, PAGE NOT AVAILABLE'
 		print(url, c)
 		if c == 200: 
-			Style.Colors.G(success)
+			Style.Colors.GB(success)
 		else:
 			Style.Colors.RB(fail)
 		Style.RST()
@@ -113,7 +113,7 @@ def subdomain_brute(url):
 		fail = 'ERROR, PAGE NOT AVAILABLE'
 		print(url, c)
 		if c == 200:
-			Style.Colors.G(success)
+			Style.Colors.GB(success)
 		else:
 			Style.Colors.RB(fail)
 		Style.RST()
@@ -128,7 +128,7 @@ from config import BASE_ENDPOINTS
 
 
 menu.main_banner()
-Style.Colors.R("")
+Style.Colors.RB("")
 input("PRESS ANY KEY TO CONTINUE...\n\n")
 Style.RST()
 menu.main_menu()
