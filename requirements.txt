@@ -1,5 +1,4 @@
 requests
 shodan
-colorama
 pyfiglet
 pyhunter
