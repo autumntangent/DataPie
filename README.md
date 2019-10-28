@@ -27,7 +27,9 @@ python3 DataPie.py
 
 * Gathers in Depth WHOIS information, including IP address HISTORY and DNS history
 * Gathers **subdomains** for a given host
-* Scrapes Target Domain for common vulnerable pages. (example: example.com/admin.php, example.com/o2auth/authorize)    
+* LIVE Scrapes Target Domain for common vulnerable pages. (example: example.com/admin.php, example.com/o2auth/authorize)    
   This can be very useful when performing recon & inital penetration testing. 
 * Uses NMAP to scan a network/host for open ports, services, response headers & more
+* Gathers technology data of a given website including scripts used, API integrations, javascript etc.
+* Verifies email addresses 
 
