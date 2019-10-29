@@ -15,8 +15,9 @@ API_KEYS = {
 #DICTS AND LISTS THAT WILL BE USED THROUGHOUT THE PROGRAM
 
 SUBDOMAINS = [
-"api.", "developers.","developer.","securelogin.",
-"console.", "db.", "careers.", "intranet." ]
+"about.", "api.", "login.", "developers.", "developer.", "share.", "staff.", 
+"events.", "portal.", "db.", "console.", "private.", "careers.", "contact.",
+"dns.", "intranet.", "accounts.", "securelogin." ]
 
 
 PAGES  = ["/", "/index.html", "/admin.php", "/login.php","/login.html", 
