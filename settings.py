@@ -1,12 +1,4 @@
 
-
-#CLASS TO DEFINE GREETINGS AND INTERACTIONS USED THROUGHOUT THE PROGRAM
-
-class Greetings():
-	def enter_host():
-		print("ENTER HOSTNAME TO SCAN")
-		host = input()
-
 #STYLE DEFINING CLASS 
 
 class Style():
@@ -17,8 +9,12 @@ class Style():
 	class Colors():
 		def C(str):
 			print("\033[0;36m" + str)
+		def CB(str):
+			print("\033[1;36m" + str)
 		def M(str):
 			print("\033[0;35m" + str)
+		def MB(str):
+			print("\033[1;35m" + str)
 		def RB(str):
 			print("\033[1;31m" + str)
 		def R(str):
@@ -29,3 +25,16 @@ class Style():
 			print("\033[1;32m" + str)
 		def BB(str):
 			print("\033[1;34m" + str)
+		def B(str):
+			print("\033[0;34m" + str)
+
+
+#CLASS TO DEFINE GREETINGS AND INTERACTIONS USED THROUGHOUT THE PROGRAM
+
+class Greetings():
+	def enter_host():
+		Style.Colors.CB("ENTER A HOST OR DOMAIN NAME:")
+		Style.RST()
+	def enter_dm():
+		Style.Colors.CB("ENTER A DOMAIN NAME:")
+		Style.RST()
