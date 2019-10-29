@@ -29,6 +29,7 @@ python3 DataPie.py
 * Gathers **subdomains** for a given host
 * LIVE Scrapes Target Domain for common vulnerable pages. (example: example.com/admin.php, example.com/o2auth/authorize)    
   This can be very useful when performing recon & inital penetration testing. 
+* Performs LIVE "GET" requests to a list of common subdomains to initiate a connection and see what the response is
 * Uses NMAP to scan a network/host for open ports, services, response headers & more
 * Gathers technology data of a given website including scripts used, API integrations, javascript etc.
 * Verifies email addresses 
