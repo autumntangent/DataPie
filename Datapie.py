@@ -7,6 +7,7 @@ from time import sleep
 import urllib3
 from settings import Greetings, Style
 from pyfiglet import Figlet
+from pyhunter import PyHunter
 
 #CLASS DEFINING ALL MENUS AND SUBMENUS
 
@@ -321,7 +322,6 @@ while xkey != '5':
 
 
 		if xkey == '3':
-			from pyhunter import PyHunter
 			hk = API_KEYS["hunter"]
 			menu.sub_3()
 			ek = input()
