@@ -1,4 +1,3 @@
-import pyfiglet
 import requests
 import os
 import sys
@@ -118,6 +117,35 @@ def subdomain_brute(url):
 			Style.Colors.RB(fail)
 		Style.RST()
 
+		
+		
+		
+class emails():
+	
+	def verifylist():
+		for x in EMAILS:
+			list = EMAILS
+			hk = API_KEYS["hunter"]
+			hunter = PyHunter(hk)
+			h = hunter.email_verifier(x)
+			if h["result"] == "undeliverable":
+				Style.Colors.RB(x + "  EMAIL RETURNED AN UNDELIVERABLE!")
+				continue
+				break
+			else:
+				Style.Colors.GB(x + " " + h["result"])
+				continue
+				break
+
+	def blaze():
+		b = API_KEYS["blaze"]
+		url = "https://api.blazeverify.com/v1/verify"
+		q = {"api_key":b, "email":email}
+		br = requests.get(url, params=q)
+		brc = br.text
+		h = json.loads(brc)
+		print(h)
+		
 
 #IMPORTING DATA FROM CONFIG FILE
 
@@ -193,8 +221,7 @@ while xkey != '5':
 						querystring = {"apikey":"{0}".format(akey)}
 						response = requests.request("GET", url, params=querystring)
 						print(response.text)
-						print()
-						print('SCANNING...')
+						print('\nSCANNING...')
 						url = "{0}/v1/history/{1}/dns/a".format(st, host)
 						querystring = {"apikey":"{0}".format(akey)}
 						response = requests.request("GET", url, params=querystring)
@@ -311,10 +338,12 @@ while xkey != '5':
 						x = email
 						hunter = PyHunter(hk)
 						h = hunter.email_verifier(x)
-						print(h)
+						if h["result"] == "undeliverable":
+							Style.Colors.RB(x + "EMAIL RETURNED AN UNDELIVERABLE! \n\n" + h["result"])
+						else:
+							Style.Colors.GB(x + h["result"])
 						Style.RST()
 					break
-
 			
 		if xkey == '4':
 			print('ENTER HOSTNAME TO SCAN AND GATHER DATA ON')
