@@ -1,8 +1,8 @@
 # DataPie
 A CLI tool written in Python to quickly gather/sort data, scan hosts &amp; networks and utilize OSINT for additional data gathering.  
 </br>
-### DATAPIE IS NOT FULLY DEVELOPED, IS STILL BEING WORKED ON AND HAS MANY MORE FEATURES TO COME.  
-### PLEASE TAKE NOTE THAT THE CODE IS NOT COMPLETE AND IT IS AN ACTIVE PROJECT. 
+**DATAPIE IS NOT FULLY DEVELOPED, IS STILL BEING WORKED ON AND HAS MANY MORE FEATURES TO COME.  
+PLEASE TAKE NOTE THAT THE CODE IS NOT COMPLETE AND IT IS AN ACTIVE PROJECT**  
 This is my first tool written in Python so bare with me, any advice is greatly appreciated!
 
 ## Requirements
