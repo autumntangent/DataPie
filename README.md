@@ -10,7 +10,12 @@ Datapie was written with **UNIX** systems in mind. It has not been tested on Win
 
 Datapie is written in Python and requires Python3+.  
 **NMAP** is required to be installed on your operating system to complete certain modules within the program.  
-If you do not have NMAP, you just won't be able to take advantage of all the features of the program, but you will still be able to run Datapie and use the other components.
+If you do not have NMAP, you just won't be able to take advantage of all the features of the program, but you will still be able to run Datapie and use the other components.  
+  
+  
+## CONFIG FILE  
+
++ The CONFIG.py file is the **configuration** for Datapie.py  
 
 ### API KEYS
 In order for Datapie to function fully, you must provide **API KEYS** within the Datapie **CONFIG FILE** to be able to authenticate and utilize some of the web services.
