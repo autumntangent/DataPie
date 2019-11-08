@@ -11,14 +11,6 @@ Datapie was written with **UNIX** systems in mind. It has not been tested on Win
 Datapie is written in Python and requires Python3+.  
 **NMAP** is required to be installed on your operating system to complete certain modules within the program.  
 If you do not have NMAP, you just won't be able to take advantage of all the features of the program, but you will still be able to run Datapie and use the other components.  
-  
-  
-## CONFIG FILE  
-
-+ The CONFIG.py file is the **configuration** for Datapie.py  
-
-### API KEYS
-In order for Datapie to function fully, you must provide **API KEYS** within the Datapie **CONFIG FILE** to be able to authenticate and utilize some of the web services.
 
 ## Installation 
 
@@ -26,7 +18,23 @@ git clone https://github.com/autumntangent/DataPie.git
 cd DataPie  
 pip3 install -r requirements.txt  
 nano/ vim config.py  (Add your specifc API keys into the config file)  
-python3 DataPie.py  
+python3 DataPie.py 
+
+## Configuration
+
+The CONFIG.py file is the **configuration** for Datapie.py. It contains configuration information specific to YOUR version of the program, such as API Keys, lists, etc.  
+Aside from the API Keys, the "Subdomains" and "Pages" lists are refferred to when running specific functions in the program, you can edit these and add or delete items.  
+
+### API KEYS
+In order for Datapie to function fully, you must provide **API KEYS** within the Datapie **CONFIG FILE** to be able to authenticate and utilize some of the web services.  
+
+The current API KEYS needed to run every module are provided by the following:  
+
++ https://shodan.io 
++ https://securitytrails.com 
++ https://hunter.io 
++ https://builtwith.com 
+
 
 ## Features
 
